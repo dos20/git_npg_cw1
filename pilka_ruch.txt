@@ -2,6 +2,8 @@ program pilka_ruch;
 
 //nowy komentarz
 
+//cos trzeba zmienic
+
 uses crt,graph;
 
 type
