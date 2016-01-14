@@ -1,0 +1,57 @@
+program paletka2;
+
+uses graph,crt,wincrt;
+
+var ster,tryb:smallint;
+    paddleX,paddleLength,dPx:integer;
+    ch:word;
+
+    function M_ReadKey():Word;
+    var ch:Char;
+    begin
+     ch:=ReadKey;
+      if ch=#0 then begin
+       ch:=ReadKey;
+       M_ReadKey:=256+Ord(ch);
+      end else M_ReadKey:=Ord(ch);
+    end;
+
+
+begin
+
+  ster:=VGA;
+  tryb:=VGAHi;
+
+  paddleLength:=71;
+  dPx:=5;
+
+  paddleX:=320-paddleLength div 2 + 1;
+
+  InitGraph(ster, tryb, 'C:\Programy\Pascal\BP\BGI' );
+  // SetBkColor(lightblue);
+
+     setcolor(brown);
+  rectangle(paddleX,473,paddleX+paddleLength,478);
+  while true do
+  begin
+  ch:=M_ReadKey() ;
+  cleardevice();
+  if ch=331 then        {strzalka w lewo}
+  begin
+    paddleX:=paddleX-dPx;
+    if paddleX<1 then paddleX:=1;  {ograniczenie z lewej}
+  end;
+  if ch=333 then        {strzalka w lewo}
+  begin
+    paddleX:=paddleX+dPx;
+    if paddleX>640-paddleLength-1 then paddleX:=640-paddleLength-1;  {ograniczenie z prawej}
+  end;
+  rectangle(paddleX,473,paddleX+paddleLength,478);
+  {SetFillStyle(SolidFill,brown);
+     FloodFill(paddleX + paddleLength div 2,476,brown);}
+
+  end;
+
+ readln();
+end.
+
