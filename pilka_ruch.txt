@@ -1,0 +1,65 @@
+program pilka_ruch;
+
+//nowy komentarz
+
+uses crt,graph;
+
+type
+  balls =record
+    posX:integer;
+    posY:integer;
+    radius:integer;
+    Xspeed:integer;
+    Yspeed:integer;
+  end;
+
+var ster,tryb:smallint;
+    ball:balls;
+
+
+
+
+procedure move();
+begin
+   while true do
+     begin
+       if (ball.posX-ball.radius<=0) or (ball.posX+ball.radius>=640) then
+       ball.Xspeed:=(-ball.Xspeed);
+       if (ball.posY-ball.radius<=0) or (ball.posY+ball.radius>=480) then
+       ball.Yspeed:=(-ball.Yspeed);
+       ball.posX:=ball.posX+ball.Xspeed;
+       ball.posY:=ball.posY-ball.Yspeed;
+
+       circle(ball.posX,ball.posY,ball.radius);
+
+       delay(40);
+        cleardevice;
+     end;
+
+end;
+
+begin
+
+  ster:=VGA;
+  tryb:=VGAHi;
+
+  ball.posX:=320;
+  ball.posY:=472;
+  ball.radius:=8;
+  ball.Xspeed:=5;
+  ball.Yspeed:=-4;
+
+  InitGraph(ster, tryb, 'C:\Programy\Pascal\BP\BGI' );
+   begin
+
+       circle(ball.posX,ball.posY,ball.radius);
+       move();
+
+
+
+   end;
+
+
+
+ readln();
+end.
