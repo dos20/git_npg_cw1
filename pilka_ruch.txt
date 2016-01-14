@@ -2,7 +2,7 @@ program pilka_ruch;
 
 //nowy komentarz
 
-//cos trzeba zmienic 1
+//cos trzeba zmienic 123
 
 uses crt,graph;
 
